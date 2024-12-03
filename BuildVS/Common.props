@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup Label="UserMacros">
+		<root>$(SolutionDir)/</root>
+	</PropertyGroup>
+
+	<!-- $(PlatformID) macro -->
+	<PropertyGroup Label="UserMacros">
+		<PlatformID>unknown</PlatformID>
+	</PropertyGroup>
+
+	<PropertyGroup Label="UserMacros" Condition="('$(Platform)'=='Win32')">
+		<PlatformID>x86</PlatformID>
+	</PropertyGroup>
+	<PropertyGroup Label="UserMacros" Condition="('$(Platform)'=='x64')">
+		<PlatformID>x64</PlatformID>
+	</PropertyGroup>
+	<PropertyGroup Label="UserMacros" Condition="('$(Platform)'=='Itanium')">
+		<PlatformID>ia64</PlatformID>
+	</PropertyGroup>
+	<PropertyGroup Label="UserMacros" Condition="('$(Platform)'=='ARM')">
+		<PlatformID>a32</PlatformID>
+	</PropertyGroup>
+	<PropertyGroup Label="UserMacros" Condition="('$(Platform)'=='ARM64')">
+		<PlatformID>a64</PlatformID>
+	</PropertyGroup>
+	<PropertyGroup Label="UserMacros" Condition="('$(Platform)'=='ARM64EC')">
+		<PlatformID>a64ec</PlatformID>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<OutDir>$(SolutionDir)$(Configuration)_$(PlatformID)/</OutDir>
+		<IntDir>$(SolutionDir)\TEMP\$(Configuration)_$(PlatformID)\$(MSBuildProjectName)\</IntDir>
+		<UseDebugLibraries>false</UseDebugLibraries>
+		<PlatformToolset>v100</PlatformToolset>
+	</PropertyGroup>
+
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<MultiProcessorCompilation>true</MultiProcessorCompilation>
+			<Optimization>Full</Optimization>
+			<InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+			<IntrinsicFunctions>true</IntrinsicFunctions>
+			<FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+			<OmitFramePointers>true</OmitFramePointers>
+			<BufferSecurityCheck>false</BufferSecurityCheck>
+			<FunctionLevelLinking>true</FunctionLevelLinking>
+			<PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+		</ClCompile>
+		<Link>
+		</Link>
+	</ItemDefinitionGroup>
+
+	<PropertyGroup Condition="'$(MSBuildAssemblyVersion)'=='17.0'">
+		<PlatformToolset>v143</PlatformToolset>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(PlatformID)'=='a64ec'">
+		<BuildAsX>true</BuildAsX>
+	</PropertyGroup>
+
+</Project>
